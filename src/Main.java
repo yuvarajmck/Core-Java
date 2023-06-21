@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.*;
 import java.util.stream.*;
 
 
@@ -36,6 +36,13 @@ public class Main {
                 .map(x-> x*x)
                 .average()
                 .ifPresent(System.out::println);
+
+        //filter, map, stream from list
+        List<String> people = Arrays.asList("Daniel", "ALBERTO", "DANTERYDER", "TONYSTARK", "Flynnryder");
+        people.stream()
+                .map(String::toLowerCase)
+                .filter(x->x.startsWith("d"))
+                .forEach(System.out::println);
 
     }
 }
