@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.stream.*;
 
 
@@ -18,5 +19,15 @@ public class Main {
                 .sorted()
                 .findFirst()
                 .ifPresent(System.out::println);
+
+        System.out.println();
+
+        //Array.stream, filter
+        String[] names = {"Alberto", "Danteryder", "Antonio", "TonyStark", "DanielEdmundRyder"};
+        Arrays.stream(names)
+                .filter(x-> x.startsWith("D"))
+                .sorted()
+                .forEach(System.out::println);
+
     }
 }
