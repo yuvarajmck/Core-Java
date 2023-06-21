@@ -29,5 +29,13 @@ public class Main {
                 .sorted()
                 .forEach(System.out::println);
 
+
+        //map and average
+        int[] num = {1,3,4,6,3,6,8,9};
+        Arrays.stream(num)
+                .map(x-> x*x)
+                .average()
+                .ifPresent(System.out::println);
+
     }
 }
