@@ -43,6 +43,11 @@ public class Main {
                 .map(String::toLowerCase)
                 .filter(x->x.startsWith("d"))
                 .forEach(System.out::println);
+        //Reduction- sum
+
+        double total = Stream.of(7.3, 8.2, 10.0)
+                .reduce(0.0, (Double a, Double b)-> a+b);
+        System.out.println(total);
 
     }
 }
