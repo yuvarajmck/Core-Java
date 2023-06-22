@@ -13,6 +13,15 @@ class Reservation {
             System.out.println("Ticket not available");
         }
     }
+    static synchronized void getTicket(String user){
+        if(ticketCount!=0) {
+            ticketCount--;
+            System.out.println("Ticket booked Successfully for "+user);
+        }
+        else if(ticketCount==0){
+            System.out.println("Ticket not available for "+user);
+        }
+    }
 
     static void cancelTicket(){
         ticketCount++;
@@ -27,15 +36,24 @@ class  Consumer extends Thread{
         Reservation.getTicket();
     }
 }
+
+class  Consumer1 extends Thread{
+
+    @Override
+    public void run() {
+        Reservation.getTicket("Consumer 1");
+    }
+}
 public class TrainReservation  extends  Thread{
 
     public static void main(String[] args) throws InterruptedException {
 
 
         Consumer consumer1 = new Consumer();
-        Consumer consumer2 = new Consumer();
-        consumer1.start();
+        Consumer1 consumer2 = new Consumer1();
         consumer2.start();
+        consumer1.start();
+
 
         consumer1.join();
         consumer2.join();
