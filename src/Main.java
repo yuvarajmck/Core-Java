@@ -100,7 +100,6 @@ public class Main {
 
         employees.stream()
                 .filter(x -> x.getName().startsWith("D"))
-                .map(x -> x.getName()+" ")
                 .forEach(System.out::println);
 
         System.out.println("!---------------------------!");
@@ -109,7 +108,6 @@ public class Main {
         System.out.println("\nEmployee whose mobile numbers are not upto date : \n");
         employees.stream()
                 .filter(x -> x.getMobileNumber().equals(" "))
-                .map(x -> x.getName()+" ")
                 .forEach(System.out::println);
 
 
@@ -120,7 +118,6 @@ public class Main {
         employees.stream()
                 .filter(x -> x.getDepartment().equalsIgnoreCase("QA"))
                 .filter(x -> Double.parseDouble(x.getSalary().toString())>10000.00)
-                .map(x -> x.getSalary()+" ")
                 .forEach(System.out::println);
 
         System.out.println("!---------------------------!");
@@ -130,7 +127,6 @@ public class Main {
         System.out.println("\nEmployees from It : \n");
         employees.stream()
                 .filter(x -> x.getDepartment().equalsIgnoreCase("IT"))
-                .map(x -> x.getName()+" ")
                 .forEach(System.out::println);
 
 
@@ -179,7 +175,6 @@ public class Main {
         employees.stream()
                 .sorted(Comparator.comparing(Employee::getJoiningDate).reversed())
                 .limit(3)
-                .map(Employee::getName)
                 .forEach(System.out::println);
 
         System.out.println("!---------------------------!");

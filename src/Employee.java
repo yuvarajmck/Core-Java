@@ -53,6 +53,11 @@ public class Employee {
             this.joiningDate = joiningDate;
         }
 
+        @Override
+    public String toString(){
+            return "Name : " +name+ "\nDepartment : " + Department + "\nEmail : " + email+ "\nPhone : " + Mobile + "\nSalary : " + Salary + "\nJoining Date : " + joiningDate+"\n\n";
+        }
+
 
 
 }
