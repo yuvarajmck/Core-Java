@@ -1,0 +1,50 @@
+USE employee1;
+SELECT employee.Name, max(salary.Salary) from employee inner join salary on employee.EmployeeId=salary.EmployeeId;
+SELECT employee.Name , salary.Salary from employee inner join salary on employee.EmployeeId = salary.EmployeeId where salary.Salary>(select avg(Salary) from salary);
+SELECT employee.Name, department.Role
+from employee inner join department on
+    employee.DepartmentId = department.DepartmentId where department.Role LIKe "%Manager%";
+SELECT employee.Name, department.Role from employee inner join department on
+    employee.DepartmentId = department.DepartmentId where not department.Role="Manager";
+
+SELECT employee.Name, address.City from employee inner join address on
+    employee.EmployeeId = address.EmployeeId where address.City="Chennai";
+
+SELECT employee.Name, department.Department from employee inner join department on
+    employee.DepartmentId = department.DepartmentId where department.Department like "%Engineering%";
+
+SELECT employee.Name,department.Role, department.ReportingManager
+from employee inner join department on employee.DepartmentId = department.DepartmentId;
+
+select employee.Name, department.Department
+from employee inner join department on employee.DepartmentId = department.DepartmentId order by department.Department;
+
+select employee.Name, department.Role
+from employee inner join department on employee.DepartmentId = department.DepartmentId order by department.Role;
+
+SELECT Name, HiredDate from employee where HiredDate between '2023-05-23' and '2023-06-23' ;
+
+SELECT employee.Name, salary.Salary from employee inner join salary on employee.EmployeeId = salary.EmployeeId where salary.Salary>400000;
+
+SELECT employee.Name, LeaveLogs.Reason from employee inner join LeaveLogs on employee.EmployeeId = LeaveLogs.EmployeeId;
+
+SELECT employee.Name, LeaveLogs.EndDate - LeaveLogs.StartDate from employee inner join LeaveLogs on employee.EmployeeId = LeaveLogs.EmployeeId;
+
+SELECT employee.Name, LeaveLogs.Reason
+from employee inner join LeaveLogs on employee.EmployeeId = LeaveLogs.EmployeeId
+where DATEDIFF( LeaveLogs.EndDate, LeaveLogs.StartDate)>10;
+
+SELECT employee.Name, salary.Salary, department.Department
+from employee inner join salary on employee.EmployeeId = salary.EmployeeId
+    inner join department on employee.DepartmentId = department.DepartmentId where salary.Salary>400000;
+
+select employee.Name,
+       department.Department,
+       CONVERT(int, DATEDIFF('2023-06-23' ,  employee.HiredDate)- (5*DATEDIFF('2023-06-23', employee.HiredDate)/30) - DATEDIFF( LeaveLogs.EndDate, LeaveLogs.StartDate))
+           as Attendance   from employee inner join department on employee.DepartmentId = department.DepartmentId
+               inner join LeaveLogs on employee.EmployeeId = LeaveLogs.EmployeeId
+               inner join salary on salary.EmployeeId = employee.EmployeeId
+                           where department.Department = "Sales Department" and salary.Salary > 300000;
+
+select employee.Name, salary.Salary from employee inner join salary on employee.EmployeeId = salary.EmployeeId;
+
