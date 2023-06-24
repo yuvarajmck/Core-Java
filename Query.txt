@@ -1,42 +1,87 @@
 USE employee1;
+
+Query 1: 
+
 SELECT employee.Name, max(salary.Salary) from employee inner join salary on employee.EmployeeId=salary.EmployeeId;
+
+Query 2: 
 SELECT employee.Name , salary.Salary from employee inner join salary on employee.EmployeeId = salary.EmployeeId where salary.Salary>(select avg(Salary) from salary);
+
+Query 3: 
 SELECT employee.Name, department.Role
 from employee inner join department on
     employee.DepartmentId = department.DepartmentId where department.Role LIKe "%Manager%";
+
+
+Query 4: 
 SELECT employee.Name, department.Role from employee inner join department on
     employee.DepartmentId = department.DepartmentId where not department.Role="Manager";
+
+
+Query 5: 
 
 SELECT employee.Name, address.City from employee inner join address on
     employee.EmployeeId = address.EmployeeId where address.City="Chennai";
 
+
+Query 6: 
+
 SELECT employee.Name, department.Department from employee inner join department on
     employee.DepartmentId = department.DepartmentId where department.Department like "%Engineering%";
+
+
+Query 7: 
 
 SELECT employee.Name,department.Role, department.ReportingManager
 from employee inner join department on employee.DepartmentId = department.DepartmentId;
 
+
+Query 8: 
+
 select employee.Name, department.Department
 from employee inner join department on employee.DepartmentId = department.DepartmentId order by department.Department;
+
+
+Query 9: 
 
 select employee.Name, department.Role
 from employee inner join department on employee.DepartmentId = department.DepartmentId order by department.Role;
 
+
+Query 10: 
+
 SELECT Name, HiredDate from employee where HiredDate between '2023-05-23' and '2023-06-23' ;
+
+
+Query 11: 
 
 SELECT employee.Name, salary.Salary from employee inner join salary on employee.EmployeeId = salary.EmployeeId where salary.Salary>400000;
 
+
+Query 12: 
+
 SELECT employee.Name, LeaveLogs.Reason from employee inner join LeaveLogs on employee.EmployeeId = LeaveLogs.EmployeeId;
 
+
+Query 13: 
+
 SELECT employee.Name, LeaveLogs.EndDate - LeaveLogs.StartDate from employee inner join LeaveLogs on employee.EmployeeId = LeaveLogs.EmployeeId;
+
+
+Query 14: 
 
 SELECT employee.Name, LeaveLogs.Reason
 from employee inner join LeaveLogs on employee.EmployeeId = LeaveLogs.EmployeeId
 where DATEDIFF( LeaveLogs.EndDate, LeaveLogs.StartDate)>10;
 
+
+Query 15: 
+
 SELECT employee.Name, salary.Salary, department.Department
 from employee inner join salary on employee.EmployeeId = salary.EmployeeId
     inner join department on employee.DepartmentId = department.DepartmentId where salary.Salary>400000;
+
+Query 16: 
 
 select employee.Name,
        department.Department,
@@ -45,6 +90,9 @@ select employee.Name,
                inner join LeaveLogs on employee.EmployeeId = LeaveLogs.EmployeeId
                inner join salary on salary.EmployeeId = employee.EmployeeId
                            where department.Department = "Sales Department" and salary.Salary > 300000;
+
+
+Query 17: 
 
 select employee.Name, salary.Salary from employee inner join salary on employee.EmployeeId = salary.EmployeeId;
 
